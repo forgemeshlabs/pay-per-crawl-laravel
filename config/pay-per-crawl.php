@@ -3,7 +3,7 @@
 return [
 
     /*
-    | monitor: classify and log, never charge (safe default; shows what you would have earned).
+    | monitor: classify and log, never charge (safe default; shows which bots you would have charged).
     | gate:    answer HTTP 402 to bots until they pay. Needs a valid pay_to wallet, otherwise
     |          the package silently stays in monitor mode.
     */
