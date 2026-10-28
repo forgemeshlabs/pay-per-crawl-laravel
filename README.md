@@ -1,6 +1,10 @@
 # ForgeMesh Pay-per-Crawl for Laravel
 
-Laravel middleware that charges AI crawlers and scrapers per page with [x402](https://x402.org) (v1 and v2) and MPP USDC micropayments on Base. Humans and verified search engines read free; bots get an HTTP `402 Payment Required` until they pay, and the money goes straight to **your** wallet.
+**Know who crawls your site. Charge the ones that can pay.**
+
+Pay-per-Crawl shows you every AI crawler, SEO crawler and script that fetches your pages, verifies the real search engines by reverse DNS so SEO is untouched, and lets you answer everything else with a standard HTTP 402 price in USDC on Base, paid to your own wallet. Be clear about what pays today: x402-capable agents do; the big AI labs' crawlers (GPTBot, ClaudeBot, PerplexityBot and friends) do not yet pay anyone per page, and they simply get no content from a charging site. Until they do, this is an honest bot ledger with the price already on the door. You see who takes what, you can block or charge any of it, and when a crawler does pay, it goes straight to you. Nobody in between holds the money.
+
+This is Laravel middleware using [x402](https://x402.org) (v1 and v2) and MPP. Humans and verified search engines read free; bots get an HTTP `402 Payment Required` until they pay.
 
 - Service provider, `pay-per-crawl` middleware (auto-added to the `web` group), `config/pay-per-crawl.php`
 - Routes: `/.well-known/x402.json`, `/llms.txt`, `/agents.txt`
@@ -33,7 +37,7 @@ composer require forgemesh/pay-per-crawl-laravel:^0.1
 php artisan migrate
 ```
 
-The package starts in **monitor** mode: it classifies and logs bots and never charges, so you can see what you would earn. Then, in `.env`:
+The package starts in **monitor** mode: it classifies and logs bots and never charges, so you can see which bots you would be charging. Then, in `.env`:
 
 ```dotenv
 PAY_PER_CRAWL_MODE=gate
